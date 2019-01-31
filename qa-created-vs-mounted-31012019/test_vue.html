@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue Developer Thailand</title>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<li v-for="i in items" :value=i.pid>{{ i.pname }}</li>
+		</ul>
+	</div>
+	<script src="https://vuejs.org/js/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el : '#app' ,
+			data:{
+				items: [
+				{ pid:1000 , pname : "Vue Developers Thailand"},
+				{ pid:1001 , pname : "iPhone Xs Max สีทอง 512GB - ขอต้อนรับสู่โลกใหม่ของจอใหญ่"}
+				]
+			},
+			created: function(){
+				try{
+					console.log("created");
+					this.items.push({ pid:1002 , pname : "Mac mini - Intel Core i7 รุ่นที่ 8 แบบ 6-core ความเร็ว 3.2GHz (Turbo Boost สูงสุด 4.6GHz)"});
+					console.log(this.items);
+				}catch(e){
+					console.log(e);
+				}
+			},
+			mounted: function(){
+				this.$nextTick(function () {
+					console.log("After mounted.");
+  				})
+				console.log("mounted.");
+			}
+		})
+	</script>
+</body>
+</html>
